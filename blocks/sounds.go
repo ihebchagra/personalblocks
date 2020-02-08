@@ -58,8 +58,6 @@ func mpdradio(radio,button string) {
 		fmt.Printf("%s",title)
 		home, _ := os.UserHomeDir()
 		f, _ := os.OpenFile(home + "/.calcurse/notes/songstodownload.txt",os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
-		_, err := f.WriteString("text to append\n");
-		_ = err
 		defer f.Close()
 		if _, err := f.WriteString(title + "\n"); err == nil {
 			cmd := exec.Command("notify-send","🎶 Added to songstodownload.txt",title).Run()
