@@ -1,7 +1,8 @@
 # personalblocks
 my personal i3blocks blocklets written in Go
 
-##Usage:
+## Usage:
+
 ```
 personalblocks [command]
 
@@ -20,5 +21,6 @@ List of commands:
 -volume
 ```
 
-##Installing:
+## Installing:
+
 you can use Nix and the default.nix expression to install it
