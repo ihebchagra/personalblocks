@@ -21,6 +21,10 @@ List of commands:
 -volume
 ```
 
-## Installing:
+## Building:
 
-you can use Nix and the default.nix expression to install it
+```
+$ go build main.go
+```
+
+
