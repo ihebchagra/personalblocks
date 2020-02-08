@@ -55,7 +55,7 @@ func mpdradio(radio,button string) {
 		fmt.Printf("%s",gettitle(radio))
 	case "2","4","5":
 		title:=gettitle(radio)
-		fmt.Println("%s",title)
+		fmt.Printf("%s",title)
 		home, _ := os.UserHomeDir()
 		f, _ := os.OpenFile(home + "/.calcurse/notes/songstodownload.txt",os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 		_, err := f.WriteString("text to append\n");
@@ -74,7 +74,7 @@ func misk(radio,button string) {
 		fmt.Printf("%s",gettitle(radio))
 	case "2","4","5":
 		title:=gettitle(radio)
-		fmt.Println("%s",title)
+		fmt.Printf("%s",title)
 		f, _ := os.OpenFile("text.log",os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 		_, err := f.WriteString("text to append\n");
 		_ = err
