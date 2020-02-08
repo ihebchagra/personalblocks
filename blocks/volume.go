@@ -17,9 +17,9 @@ func Volume(button string) {
 		if vol, _ := strconv.Atoi(strings.Split(string(out2)," ")[0]); vol > 70 {
 			fmt.Printf(" %d%%\n", vol)
 		} else if vol > 30 {
-			fmt.Printf(" %d%%\n", vol)
-		} else {
 			fmt.Printf(" %d%%\n", vol)
+		} else {
+			fmt.Printf(" %d%%\n", vol)
 		}
 	}
 
