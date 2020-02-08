@@ -5,14 +5,15 @@ import (
 	"os/exec"
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 
 func Battery(button string) {
 	out, _ := exec.Command("acpi","-b").CombinedOutput()
-	acpi := string(out)
-	re1 := regexp.MustCompile(`^\w+ \w+: (\w+).*\n`)
-	re2 := regexp.MustCompile(`.*, ([[:digit:]]+)%.*\n`)
+	acpi := strings.TrimSuffix(string(out),"\n")
+	re1 := regexp.MustCompile(`^\w+ \w+: (\w+).*`)
+	re2 := regexp.MustCompile(`.*, ([[:digit:]]+)%.*`)
 	status := re1.ReplaceAllString(acpi ,"$1")
 	capacity := re2.ReplaceAllString(acpi ,"$1")
 	capacityval, _ := strconv.Atoi(capacity)
@@ -28,7 +29,7 @@ func Battery(button string) {
 		fmt.Printf(" %s%% \n",capacity)
 	}
 
-	if button == "3" {
+	if button == "1" {
 		cmd := exec.Command("notify-send",acpi).Start()
 		_ = cmd
 	}
