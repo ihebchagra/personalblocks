@@ -30,11 +30,11 @@ func Music(button string) {
 		_ = cmd
 	case "4":
 		cmd := exec.Command("mpc","-q","next").Start()
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(250 * time.Millisecond)
 		_ = cmd
 	case "5":
 		cmd := exec.Command("mpcprevious.sh").Start()
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(250 * time.Millisecond)
 		_ = cmd
 	}
 }
