@@ -2,6 +2,7 @@
 my personal i3blocks blocklets written in Go
 
 ##Usage:
+
 ```
 personalblocks [command]
 
@@ -21,4 +22,5 @@ List of commands:
 ```
 
 ##Installing:
+
 you can use Nix and the default.nix expression to install it
