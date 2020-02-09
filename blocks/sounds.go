@@ -51,8 +51,14 @@ func gettitle(radio string) string {
 
 func mpdradio(radio,button string) {
 	switch button {
-	case "":
-		fmt.Printf("%s",gettitle(radio))
+	case "1":
+		cmd := exec.Command("i3-msg","-q","exec $TERMINAL -e ncmpcpp").Start()
+		_ = cmd
+	case "3":
+		cmd := exec.Command("mpc","-q","update").Run()
+		cmd = exec.Command("mpc","-q","clear").Run()
+		cmd = exec.Command("mpc","-q","add","/").Run()
+		_ = cmd
 	case "2","4","5":
 		title:=gettitle(radio)
 		fmt.Printf("%s",title)
@@ -63,13 +69,16 @@ func mpdradio(radio,button string) {
 			cmd := exec.Command("notify-send","🎶 Added to songstodownload.txt",title).Run()
 			_ = cmd
 		}
+	default:
+		fmt.Printf("%s",gettitle(radio))
 	}
 }
 
 func misk(radio,button string) {
 	switch button {
-	case "":
-		fmt.Printf("%s",gettitle(radio))
+	case "3":
+		cmd := exec.Command("pkill","-f","mpv http://live.misk.tn:8000/stream").Start()
+		_ = cmd
 	case "2","4","5":
 		title:=gettitle(radio)
 		fmt.Printf("%s",title)
@@ -79,14 +88,16 @@ func misk(radio,button string) {
 			cmd := exec.Command("notify-send","🎶 Added to songstodownload.txt",title).Run()
 			_ = cmd
 		}
+	default:
+		fmt.Printf("%s",gettitle(radio))
 	}
 }
 
 func otherradiocommand(button,name,process string) {
-	if button == "" {
+	if button != "3" {
 		fmt.Printf("Playing %s\n",name)
-	} else if button == "3" {
-		cmd := exec.Command("pkill","-f",process)
+	} else {
+		cmd := exec.Command("pkill","-f",process).Start()
 		_ = cmd
 	}
 }
