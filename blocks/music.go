@@ -14,7 +14,7 @@ func Music(button string) {
 	if (file == "https://listen.moe/stream\n") || (file == "http://stream.pianoramaradio.ru\n") || re.MatchString(file) {
 		return
 	}
-	format:="[%albumartist% - ]|[%artist% - ]&%title%"
+	format:="[%artist% - ]|[%albumartist% - ]&%title%"
 	out, _:= exec.Command("mpc","-f",format,"current").Output()
 	if song:=string(out); song != "" {
 		fmt.Printf("%s",song)
